@@ -23,12 +23,12 @@ namespace BoundfoxStudios.TimeManipulation
 
     private void OnEnable()
     {
-      _rewindManager.Value.RegisterBody(this);
+      _rewindManager.Value.RegisterRewindable(this);
     }
 
     private void OnDisable()
     {
-      _rewindManager.Value.UnregisterBody(this);
+      _rewindManager.Value.UnregisterRewindable(this);
     }
 
     public void StartRewindTime()

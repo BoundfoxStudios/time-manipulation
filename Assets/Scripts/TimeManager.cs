@@ -10,12 +10,12 @@ namespace BoundfoxStudios.TimeManipulation
     
     private readonly IList<RewindableBody> _rewindableBodies = new List<RewindableBody>();
 
-    public void RegisterBody(RewindableBody body)
+    public void RegisterRewindable(RewindableBody body)
     {
       _rewindableBodies.Add(body);
     }
 
-    public void UnregisterBody(RewindableBody body)
+    public void UnregisterRewindable(RewindableBody body)
     {
       _rewindableBodies.Remove(body);
     }
