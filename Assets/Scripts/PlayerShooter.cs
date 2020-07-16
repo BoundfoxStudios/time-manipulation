@@ -4,23 +4,28 @@ namespace BoundfoxStudios.TimeManipulation
 {
   public class PlayerShooter : MonoBehaviour
   {
-    public GameObject ExplosionPrefab;
+    public GameObject BulletPrefab;
+    public GameObject RewindableBulletPrefab;
     public Camera Camera;
 
     private void Update()
     {
-      if (Input.GetMouseButtonDown(0))
+      if (Input.GetKeyDown(KeyCode.Q))
       {
-        Shoot();
+        Shoot(BulletPrefab);
+      }
+      
+      if (Input.GetKeyDown(KeyCode.E))
+      {
+        Shoot(RewindableBulletPrefab);
       }
     }
 
-    private void Shoot()
+    private void Shoot(GameObject prefab)
     {
-      if (Physics.Raycast(Camera.transform.position, Camera.transform.forward, out var hit))
-      {
-        Instantiate(ExplosionPrefab, hit.point, Quaternion.LookRotation(hit.normal));
-      }
+      var cameraTransform = Camera.transform;
+      
+      Instantiate(prefab, cameraTransform.position, Quaternion.LookRotation(cameraTransform.forward));
     }
   }
 }

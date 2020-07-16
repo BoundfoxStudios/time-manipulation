@@ -262,7 +262,7 @@ GameObject:
   - component: {fileID: 107172350}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -573,7 +573,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1167106517494f74b397d67be85ec449, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ExplosionPrefab: {fileID: 7551744973589538018, guid: fedb8346e00c24e4696fc7ce3cb09645,
+  BulletPrefab: {fileID: 5481411483898900368, guid: 1ad58a33273aa4816a7521dcefe817bc,
+    type: 3}
+  RewindableBulletPrefab: {fileID: 4472043204669774134, guid: 5e2d5711f506645589320e57be19f16a,
     type: 3}
   Camera: {fileID: 153512774}
 --- !u!1 &111050773
@@ -1633,6 +1635,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxTimeToRewindInSeconds: 10
   ApplyForceAfterRewind: 1
+  BulletTimeStrength: 8
 --- !u!4 &613338529
 Transform:
   m_ObjectHideFlags: 0

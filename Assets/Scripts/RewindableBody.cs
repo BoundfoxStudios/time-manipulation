@@ -18,7 +18,7 @@ namespace BoundfoxStudios.TimeManipulation
     {
       _rigidbody = GetComponent<Rigidbody>();
 
-      _maxTimeRecordsToSave = (int) (1 / Time.fixedDeltaTime * _rewindManager.Value.MaxTimeToRewindInSeconds);
+      _maxTimeRecordsToSave = (int) (1 / Time.fixedUnscaledDeltaTime * _rewindManager.Value.MaxTimeToRewindInSeconds);
     }
 
     private void OnEnable()
@@ -33,6 +33,11 @@ namespace BoundfoxStudios.TimeManipulation
 
     public void StartRewindTime()
     {
+      if (_rigidbody.collisionDetectionMode == CollisionDetectionMode.ContinuousDynamic)
+      {
+        _rigidbody.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
+      }
+      
       _rigidbody.isKinematic = true;
       _isRewinding = true;
     }
@@ -46,6 +51,11 @@ namespace BoundfoxStudios.TimeManipulation
       {
         _rigidbody.velocity = _lastRewindedTimeRecord.Value.Velocity;
         _rigidbody.angularVelocity = _lastRewindedTimeRecord.Value.AngularVelocity;
+      }
+      
+      if (_rigidbody.collisionDetectionMode == CollisionDetectionMode.ContinuousSpeculative)
+      {
+        _rigidbody.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
       }
     }
 
